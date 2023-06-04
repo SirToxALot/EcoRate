@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="forms.css">
+    <title>Environmental Questionaire</title>
+
+    <script>
+        function calculateScore() {
+            const questions = [
+                {
+                    name: 'awareness',
+                    correctAnswers: ['Very high, High, Moderate']
+                },
+                {
+                    name: 'concerns',
+                    correctAnswers: ['climate-change', 'deforestation', 'water-pollution', 'species-extinction', 'waste-management']
+                },
+                {
+                    name: 'definition',
+                    correctAnswers: ['A community of living organisms in conjunction with their physical environment', 'A geographic region with unique weather patterns']
+                },
+                {
+                    name: 'actions',
+                    correctAnswers: ['recycling', 'conserving-energy-water', 'public-transportation', 'buying-locally', 'reforestation']
+                },
+                {
+                    name: 'management',
+                    correctAnswers: ['Very concerned', 'Concerned', 'Neutral']
+                },
+                {
+                    name: 'approach',
+                    correctAnswers: ['Government regulations and policies', 'Individual behavior change', 'Corporate responsibility and sustainability initiatives', 'Education and awareness campaigns', 'International cooperation and agreements']
+                }
+            ];
+
+            let totalScore = 0;
+
+            questions.forEach(question => {
+                const selectedOptions = document.querySelectorAll(`input[name="${question.name}"]:checked`);
+
+                selectedOptions.forEach(option => {
+                    if (question.correctAnswers.includes(option.value)) {
+                        totalScore++;
+                    }
+                });
+            });
+
+            return totalScore;
+        }
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('survey-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                const score = calculateScore();
+
+                // Display the total score
+                alert('Your total score: ' + score + " out of 15\nIf you got:\n15-13: Proud of you and your choices!\n12-10: Getting there!\n9-7: Needs Improvement.\n6-4: You can do better.\n3-0: Disappointing." );
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container ">
+        <style>
+            </style>
+        <header class="header">
+            <h1 id="title">
+                <b>EcoRate Environmental Awareness Survey</b>
+            </h1>
+            <p id="description">
+                Thank you for taking the time to help us improve the platform.
+            </p>
+        </header>
+        <form action="" id="survey-form">
+
+            <!-- radio button section -->
+            <div class="form-group">
+                <p id="quest">1. How would you rate your level of environmental awareness?</p>
+                <label for="">
+                    <input type="radio" name="awareness" value="Very high" class="inputRadio" checked> Very high
+                </label>
+                <label for="">
+                    <input type="radio" name="awareness" value="High" class="inputRadio"> High
+                </label>
+                <label for="">
+                    <input type="radio" name="awareness" value="Moderate" class="inputRadio"> Moderate
+                </label>
+                <label for="">
+                    <input type="radio" name="awareness" value="Low" class="inputRadio"> Low
+                </label>
+                <label for="">
+                    <input type="radio" name="awareness" value="Very Low" class="inputRadio"> Very Low
+                </label>
+            </div>
+
+            <!-- Checkbox section -->
+            <div class="form-group">
+                <p id="quest">2. Which of the following environmental issues are you most concerned about? (Select all that apply)</p>
+                <label for="">
+                    <input type="checkbox" name="concerns" class="checkbox" value="climate-change"> Climate change
+                </label>
+                <label for="">
+                    <input type="checkbox" name="concerns" class="checkbox" value="deforestation"> Deforestation
+                </label>
+                <label for="">
+                    <input type="checkbox" name="concerns" class="checkbox" value="water-pollution"> Water pollution
+                </label>
+                <label for="">
+                    <input type="checkbox" name="concerns" class="checkbox" value="species-extinction"> Species extinction
+                </label>
+                <label for="">
+                    <input type="checkbox" name="concerns" class="checkbox" value="waste-management"> Waste management
+                </label>
+            </div>
+            <!-- End of checkbox section -->
+
+            <div class="form-group">
+                <p id="quest">3. How would you define an ecosystem?</p>
+                <label for="">
+                    <input type="radio" name="definition" value="A community of living organisms in conjunction with their physical environment" class="inputRadio" checked> A community of living organisms in conjunction with their physical environment
+                </label>
+                <label for="">
+                    <input type="radio" name="definition" value="A geographic region with unique weather patterns" class="inputRadio"> A geographic region with unique weather patterns
+                </label>
+                <label for="">
+                    <input type="radio" name="definition" value="A scientific laboratory for studying environmental phenomena" class="inputRadio"> A scientific laboratory for studying environmental phenomena
+                </label>
+                <label for="">
+                    <input type="radio" name="definition" value="A collection of various human-made structures" class="inputRadio"> A collection of various human-made structures
+                </label>
+            </div>
+
+            <!-- Checkbox section -->
+            <div class="form-group">
+                <p id="quest">4. Have you taken any personal actions to reduce your environmental impact? (Select all that apply)</p>
+                <label for="">
+                    <input type="checkbox" name="actions" class="checkbox" value="recycling"> Recycling and waste separation
+                </label>
+                <label for="">
+                    <input type="checkbox" name="actions" class="checkbox" value="conserving-energy-water"> Conserving energy and water
+                </label>
+                <label for="">
+                    <input type="checkbox" name="actions" class="checkbox" value="public-transportation"> Using public transportation, cycling, or walking instead of driving
+                </label>
+                <label for="">
+                    <input type="checkbox" name="actions" class="checkbox" value="buying-locally"> Buying locally sourced and organic products
+                </label>
+                <label for="">
+                    <input type="checkbox" name="actions" class="checkbox" value="reforestation"> Planting trees or participating in reforestation efforts
+                </label>
+                <label for="">
+                    <input type="checkbox" name="actions" class="checkbox" value="none"> None of the above
+                </label>
+            </div>
+            <!-- End of checkbox section -->
+
+            <div class="form-group">
+                <p id="quest">5. How concerned are you about the management of human activities and their effects on the environment?</p>
+                <label for="">
+                    <input type="radio" name="management" value="Very concerned" class="inputRadio" checked> Very concerned
+                </label>
+                <label for="">
+                    <input type="radio" name="management" value="Concerned" class="inputRadio"> Concerned
+                </label>
+                <label for="">
+                    <input type="radio" name="management" value="Neutral" class="inputRadio"> Neutral
+                </label>
+                <label for="">
+                    <input type="radio" name="management" value="Not concerned" class="inputRadio"> Not concerned
+                </label>
+                <label for="">
+                    <input type="radio" name="management" value="Not aware of the management practices and their effects" class="inputRadio"> Not aware of the management practices and their effects
+                </label>
+            </div>
+
+            <div class="form-group">
+                <p id="quest">6. Which of the following do you believe is the most effective approach to address environmental issues?</p>
+                <label for="">
+                    <input type="radio" name="approach" value="Government regulations and policies" class="inputRadio" checked> Government regulations and policies
+                </label>
+                <label for="">
+                    <input type="radio" name="approach" value="Individual behavior change" class="inputRadio"> Individual behavior change
+                </label>
+                <label for="">
+                    <input type="radio" name="approach" value="Corporate responsibility and sustainability initiatives" class="inputRadio"> Corporate responsibility and sustainability initiatives
+                </label>
+                <label for="">
+                    <input type="radio" name="approach" value="Education and awareness campaigns" class="inputRadio"> Education and awareness campaigns
+                </label>
+                <label for="">
+                    <input type="radio" name="approach" value="International cooperation and agreements" class="inputRadio"> International cooperation and agreements
+                </label>
+            </div>
+
+            <!-- Textarea section -->
+            <div class="form-group">
+                <p id="quest">7. Are you familiar with any environmental conservation organizations or initiatives? If yes, please specify.</p>
+                <textarea name="organizations" cols="30" rows="5" id="feedback" class="textarea" placeholder="Enter your answer here..."></textarea>
+            </div>
+
+            <!-- Textarea section -->
+            <div class="form-group">
+                <p id="quest">8. In your opinion, what role should businesses play in minimizing their impact on the environment?</p>
+                <textarea name="business-role" cols="30" rows="5" id="feedback" class="textarea" placeholder="Enter your answer here..."></textarea>
+            </div>
+
+            <!-- Textarea section -->
+            <div class="form-group">
+                <p id="quest">9. Have you participated in any local or community-based environmental initiatives or projects? If yes, please describe your involvement.</p>
+                <textarea name="involvement" cols="30" rows="5" id="feedback" class="textarea" placeholder="Enter your answer here..."></textarea>
+            </div>
+
+            <!-- Textarea section -->
+            <div class="form-group">
+                <p id="quest">10. What steps do you think should be taken to protect and preserve ecosystems in your local area?</p>
+                <textarea name="steps" cols="30" rows="5" id="feedback" class="textarea" placeholder="Enter your answer here..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="submit" class="btn">Submit</button>
+            </div>
+            <button><a style="text-decoration:none" href = "index.html">Back to Home</a></button>
+            
+            
+        </form>
+    </div>
+</body>
+</html>
